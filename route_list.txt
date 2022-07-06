@@ -1,0 +1,40 @@
+-- No KeyRequired
+
+-- Auth
+http://127.0.0.1:80/api/login
+
+-- Key Required
+
+--- Auth
+http://127.0.0.1:80/api/logout
+
+--- Public
+---- View Prodcuts
+GET     http://127.0.0.1:80/api/prodcuts
+GET     http://127.0.0.1:80/api/prodcuts/{id}
+GET     http://127.0.0.1:80/api/prodcuts/image/{name}
+---- View Orders
+GET     http://127.0.0.1:80/api/orders
+GET     http://127.0.0.1:80/api/orders/{id}
+GET     http://127.0.0.1:80/api/orders/image/{name}
+
+--- Seller 
+---- Manage Prodcuts
+POST          http://127.0.0.1:80/api/prodcuts
+PUT/PATCH     http://127.0.0.1:80/api/prodcuts/{id}
+DELETE        http://127.0.0.1:80/api/prodcuts/{id}
+--- Take Orders
+PUT/PATCH     http://127.0.0.1:80/api/orders/{id}
+---- Set Orders Ready to Retrieve
+PUT/PATCH     http://127.0.0.1:80/api/orders/{id}
+---- Set Orders is Retrieved
+PUT/PATCH     http://127.0.0.1:80/api/orders/{id}
+
+--- User (Students/Teachers)
+---- Place Orders
+POST    http://127.0.0.1:80/api/orders
+---- Cancel Orders
+PUT/PATCH     http://127.0.0.1:80/api/orders/{id}
+
+--- Teller
+---- Make payments

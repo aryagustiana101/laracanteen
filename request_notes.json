@@ -1,0 +1,44 @@
+{
+    "items": [
+        {
+            "product_id": 1,
+            "amount": 5,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 10,
+            "amount": 1,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 18,
+            "amount": 3,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 27,
+            "amount": 2,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 34,
+            "amount": 3,
+            "customer_notes": null
+        },
+        {
+            "product_id": 41,
+            "amount": 2,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 76,
+            "amount": 5,
+            "customer_notes": "lorem"
+        },
+        {
+            "product_id": 83,
+            "amount": 7,
+            "customer_notes": "lorem"
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+[
+"name" => "Asep Ulumudin",
+"nuptk" => "2151766667130103",
+"nip" => null,
+"email" => "hab.diens@gmail.com",
+"phone_number" => "085294993268",
+"gender" => "Laki-Laki",
+"birth_place" => "Garut",
+"birth_date" => "1988-08-19",
+"address" => "Kp.Nagrak rt 7 rw 2 Desa Jati Kec. Tarogong Kaler"
+],
+[
+"name" => "Revy Cahya Alamsyah",
+"nuptk" => "734318903",
+"nip" => null,
+"email" => "revy_cahya@smknegeri1garut.sch.id",
+"phone_number" => null,
+"gender" => "Perempuan",
+"birth_place" => "Garut",
+"birth_date" => "1998-05-21",
+"address" => "KP. CIPAPAR KALER rt 4 rw 1 Desa Leles Kec. Leles"
+],
+[
+"name" => "Andriansyah Maulana",
+"nuptk" => "528233703",
+"nip" => null,
+"email" => "andriansyah_maulana@smknegeri1garut.sch.id",
+"phone_number" => null,
+"gender" => "Laki-Laki",
+"birth_place" => "Tanggerang",
+"birth_date" => "1995-08-03",
+"address" => "PERUM BUMI MALAYU ASRI BLOK G 10 RT 2 RW 10 Desa Mekarwangi Kec. Tarogong Kaler"
+],
+[
+"name" => "Rahmi Aprianti",
+"nuptk" => "100696129",
+"nip" => null,
+"email" => "rahmiaprianti6@gmail.com",
+"phone_number" => null,
+"gender" => "Perempuan",
+"birth_place" => "Garut",
+"birth_date" => "1997-04-25",
+"address" => "KP. TANJUNG 01/01 Desa PASAWAHAN Kec. Tarogong Kaler"
+]
+[
+"name" => "M Arya Anggara Gustiana",
+"nis" => "192010076",
+"nisn" => "0045998701",
+"email" => "skyanggara123@gmail.com",
+"phone_number" => "081320199090",
+"gender" => "Laki-Laki",
+"birth_place" => "Garut",
+"birth_date" => "2004-03-03",
+"address" => "Kp. Waluran rt 1 rw 5 Desa SUKALAKSANA Kec. Samarang"
+],
+[
+"name" => "Tiwi Pebrianti",
+"nis" => "192010102",
+"nisn" => "0045087440",
+"email" => "ljhf2t@erapor-smk.net",
+"phone_number" => "081320199104",
+"gender" => "Laki-Laki",
+"birth_place" => "Garut",
+"birth_date" => "2004-02-10",
+"address" => "Kp.Babakan rt 5 rw 3 Desa Sukakarya Kec. Banyuresmi"
+],
+[
+"name" => "Wava Angeli Salsabila",
+"nis" => "192010106",
+"nisn" => "0044379106",
+"email" => "wavasalsabila86@gmail.com",
+"phone_number" => "081320199105",
+"gender" => "Perempuan",
+"birth_place" => "Bandung",
+"birth_date" => "2004-04-02",
+"address" => "KP. CIKEMBANG RT. 001/005 rt 1 rw 25 Desa KOTA KULON Kec. Garut Kota"
+],
+[
+"name" => "Yusri Rizqi",
+"nis" => "192010107",
+"nisn" => "0043613356",
+"email" => "yusriappolo@gmail.com",
+"phone_number" => "081320199106",
+"gender" => "Laki-Laki",
+"birth_place" => "Semarang",
+"birth_date" => "2004-08-17",
+"address" => "JL. GUNUNG SATRIA NO. 55 rt 0 rw 0 Desa KOTA KULON Kec. Garut Kota"
+]
+
+
+[
+"name" => "Dimas Aditya",
+"email" => "seller1@smknegeri1garut.sch.id",
+"phone_number" => "081331197881",
+"gender" => "Laki-Laki",
+"birth_place" => "Bandung",
+"birth_date" => "1998-04-13",
+"address" => "Tarogong Kaler"
+],
+[
+"name" => "Agus Setiawan",
+"email" => "seller2@smknegeri1garut.sch.id",
+"phone_number" => "081339090681",
+"gender" => "Laki-Laki",
+"birth_place" => "Garut",
+"birth_date" => "1997-03-25",
+"address" => "Garut Kota"
+]
+
+
+
+$user = User::where('email', $credentials['user_auth'])->orWhere('phone_number', $credentials['user_auth'])
+->orWhereHas('student', function (Builder $query) use ($credentials) {
+    $query->where('nisn', $credentials['user_auth'])->orWhere('nis', $credentials['user_auth']);
+})
+->orWhereHas('teacher', function (Builder $query) use ($credentials) {
+    $query->where('nuptk', $credentials['user_auth'])->orWhere('nip', $credentials['user_auth']);
+})->first();
+
+// $round_original_price = round((int) $validated['price'] / 500) * 500;
+// $round_admin_price = ((round((int) $validated['price'] / 500) * 500) * 5 / 100 < 500) ? 500 : round((int) $validated['price'] / 500) * 500 * 5 / 100;
+// $round_tax_price = round((int) $validated['price'] / 500) * 500 * 10 / 100;
+
+return [
+    'price' => (string) $validated['price'],
+    'price_rounded' => $price_rounded,
+    'admin_price' => $admin_price,
+    'admin_price_rounded' => $admin_price_rounded,
+    'tax_price' => $tax_price,
+    'tax_price_rounded' => $tax_price_rounded,
+    'user_price' => $user_price,
+    'user_price_rounded' => $user_price_rounded,
+];
+
+--Done
+-search
+-category_id
+-store_id
+-price
+
+place-orders
+take-orders
+
+    3,
+    3,
+    2,
+    5,
+    4,
+    4,
+    1,
+    3,
+    1
+
+                // return [
+                //     'payment_group_id' => $currentPaymentGroup->id,
+                //     'order_code' => $orderCode,
+                //     'order_status' => 'Pesanan Dibuat Sistem',
+                //     'total_price' => $total_price,
+                //     'total_price_rounded' => $total_price_rounded,
+                //     'total_admin_price' => $total_admin_price,
+                //     'total_admin_price_rounded' => $total_admin_price_rounded,
+                //     'total_tax_price' => $total_tax_price,
+                //     'total_tax_price_rounded' => $total_tax_price_rounded,
+                //     'total_user_price' => $total_user_price,
+                //     'total_user_price_rounded' => $total_user_price_rounded,
+                //     'total_items' => $total_items,
+                //     'retrieval_time' => null,
+                //     'retrieval_details' => null,
+                // ];
+
+                $orderDetails += [$j - 1 => [
+                        'order_header_id' => '',
+                        'product_id' => $products[$stores[$i - 1]['id']][$j - 1]['id'],
+                        'amount' => $items->where('product_id', $products[$stores[$i - 1]['id']][$j - 1]['id'])->values()[0]['amount'],
+                        'price' => $products[$stores[$i - 1]['id']][$j - 1]['price'],
+                        'price_rounded' => $products[$stores[$i - 1]['id']][$j - 1]['price_rounded'],
+                        'admin_price' => $products[$stores[$i - 1]['id']][$j - 1]['admin_price'],
+                        'admin_price_rounded' => $products[$stores[$i - 1]['id']][$j - 1]['admin_price_rounded'],
+                        'tax_price' => $products[$stores[$i - 1]['id']][$j - 1]['tax_price'],
+                        'tax_price_rounded' => $products[$stores[$i - 1]['id']][$j - 1]['tax_price_rounded'],
+                        'user_price' => $products[$stores[$i - 1]['id']][$j - 1]['user_price'],
+                        'user_price_rounded' => $products[$stores[$i - 1]['id']][$j - 1]['user_price_rounded'],
+                        'customer_notes' => $items->where('product_id', $products[$stores[$i - 1]['id']][$j - 1]['id'])->values()[0]['customer_notes']
+                    ]];
+                                if (!$product) {
+                $code = 404;
+                $response['code'] = $code;
+                $response['status'] = 'NOT FOUND';
+                $response['data'] = [
+                    'message' => 'Product given not found.'
+                ];
+                return response()->json($response, $code);
+            }
+            if (!$product->store->open_status) {
+                $code = 404;
+                $response['code'] = $code;
+                $response['status'] = 'NOT FOUND';
+                $response['data'] = [
+                    'message' => 'Store in associated product is not open yet.'
+                ];
+                return response()->json($response, $code);
+            }
+
+- masuk / dibuat_sistem
+- dibatalkan_pengguna/ditolak_toko
+- diterima / disiapkan
+- dibatalkan_toko
+- siap_ambil / siap_bayar
+- tidak_dibayar / hangus
+- dibayar
+- diambil
+- batal
+- selesai
+
+- masuk
+- disiapkan
+- siap_dibayar
+- dibayar
+- diambil
+- dibatalkan_pengguna
+- ditolak_toko
+- dibatalkan_toko
+- tidak_dibayar/hangus
+- batal (all)
+- selesai
+
+[
+'Pesanan Dibuat Sistem'     -> +2   || -> 'Pesanan Ditolak Toko' || -> 'Pesanan Dibatalkan Pengguna'
+'Pesanan Diterima Toko'     ->
+'Pesanan Sedang Disiapkan'  -> +60  || -> 'Pesanan Dibatalkan Toko'
+'Pesanan Siap Dibayar'      -> +30  || -> 'Pesanan Hangus Tidak Dibayar'
+'Pesanan Sudah Dibayar'     ->
+'Pesanan Siap Diambil'      -> +60  || -> Auto finish
+'Pesanan Sudah Diambil'     ->
+'Pesanan Selesai'           ->
+]
+
+[‘Pesanan Dibuat Sistem’, ‘Pesanan Diterima Toko’, ‘Pesanan Sedang Disiapkan’, ‘Pesanan Siap Diambil, ‘Pesanan Hangus Tidak Dibayar‘, ‘Pesanan Batal’]
+[‘Pesanan Dibuat Sistem’, ‘Pesanan Diterima Toko’, ‘Pesanan Sedang Disiapkan’, ‘Pesanan Dibatalkan Toko’, ‘Pesanan Batal’]
+[‘Pesanan Dibuat Sistem’, ‘Pesanan Ditolak Toko’, ‘Pesanan Batal’]
+[‘Pesanan Dibuat Sistem’, ‘Pesanan Dibatalkan Pengguna’, ‘Pesanan Batal’]
